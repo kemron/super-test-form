@@ -19,13 +19,19 @@ function StepperForm({ title, steps }: StepperProps) {
   const step = steps[currentStep]
 
   return (
-    <section>
+    <section className="flex mt-[74px]">
       <Stepper steps={stepTags} onStepChange={setCurrentStep} />
-      <h1 className="text-xl">{title}</h1>
-      <h2 className="text-lg">{step.name}</h2>
-      <div className="mt-9">
-        {step.form}
+      <div className="max-w-[400px] w-[400px] mx-auto">
+        <div className="flex flex-col items-center">
+          <h1 className="text-3xl text-[#413C5F]">{title}</h1>
+          <h2 className="text-xl text-[#817CA5] mt-[17px]">{step.name}</h2>
+        </div>
+
+        <div className="mt-9">
+          {step.form}
+        </div>
       </div>
+
     </section >
   )
 }

@@ -1,10 +1,11 @@
-import { PropsWithChildren, createContext, useContext, useMemo, useState } from "react";
+import { PropsWithChildren, createContext, useCallback, useContext, useMemo, useState } from "react";
 
 
 interface StepperState {
   currentStep: number,
   setForm: (values: Record<string, string>) => void,
   setCurrentStep: (step: number) => void,
+  nextStep: () => void,
   form: Record<string, string>,
 }
 
@@ -24,11 +25,21 @@ export function StepperFormProvider({ children }: PropsWithChildren<{}>) {
   const [currentStep, setCurrentStep] = useState(0)
   const [form, setForm] = useState<Record<string, string>>({})
 
+
+  const updateForm = useCallback((values: Record<string, string>) => {
+    setForm((prevForm) => ({ ...prevForm, ...values }))
+  }, [])
+
+  const nextStep = useCallback(() => {
+    setCurrentStep((step) => step + 1)
+  }, [])
+
   const state: StepperState = useMemo(() => ({
     currentStep,
     form,
     setCurrentStep,
-    setForm,
+    nextStep,
+    setForm: updateForm,
   }), [currentStep, form])
 
   return (

@@ -6,4 +6,5 @@
 body{ 
     background-image: url("./assets/bg.svg");
     background-size: cover;
+    font-family:"Inter" , sans-serif
 }
