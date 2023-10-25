@@ -1,27 +1,34 @@
-# React + TypeScript + Vite
+# Super Test Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ Demostration of basic stepper form implementation using React and Typescript.
 
-Currently, two official plugins are available:
+## Technologies used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ --  React
+ -- Typescript
+ -- Tailwind
+ -- react-hook-forms
 
-## Expanding the ESLint configuration
+## Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository, navigate into folder and install the dependencies
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+   npm install 
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Start application
+
+```bash
+npm run dev 
+```
+
+The application should start on `port:5173` by default. If not, copy the url from the console
+
+##### Note: There is a known issue with vite for some versions of nodeJS, see [here](https://github.com/vitejs/vite/issues/14299). However it should run fine if using the current Node LTS version (v20.9.0 at present).
+
+## Improvements
+
+#### Testing
+
+Yes testing - There are no tests. Fortunately the form is pretty simple and tests can easily be added using the suite or your choice. Since most of the components are very simple structuing components there would be little value in testing those, however the larger step sections can be tested using React Testing library or some other tool to verify proper flow of data through the expected channels upon user interaction.
