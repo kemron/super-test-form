@@ -39,9 +39,10 @@ export default function InitialInfoForm() {
   const canSubmit = formState.isValid && formState.isDirty
   return (
     <Form onSubmit={onSubmit} actionBtnLabel="Continue" disabled={!canSubmit}>
-      <InputField label="Username" error={formState.errors.username?.message} placeholder="Input username" {...register("username")} />
-      <InputField type="email" label="Email" error={formState.errors.email?.message} placeholder="Input email"{...register("email")} />
+      <InputField id="username" label="Username" error={formState.errors.username?.message} placeholder="Input username" {...register("username")} />
+      <InputField id="email" type="email" label="Email" error={formState.errors.email?.message} placeholder="Input email"{...register("email")} />
       <SelectFormField<Country>
+        id="country"
         placeholder="Select Country"
         label="Country"
         data={countries}
@@ -49,7 +50,7 @@ export default function InitialInfoForm() {
         optionValue={countryValue}
         error={formState.errors.country?.message}
         {...register("country")} />
-      <InputField label="Phone Number" error={formState.errors.phone?.message} placeholder="Input phone number" {...register("phone")} />
+      <InputField id="phone" label="Phone Number" error={formState.errors.phone?.message} placeholder="Input phone number" {...register("phone")} />
     </Form>
   )
 }

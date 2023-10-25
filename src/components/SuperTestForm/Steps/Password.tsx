@@ -34,8 +34,8 @@ export default function PasswordScreen() {
   const canSubmit = formState.isValid && formState.isDirty
   return (
     <Form onSubmit={onSubmit} actionBtnLabel="Continue" disabled={!canSubmit}>
-      <InputField type="password" label="Password" error={formState.errors.password?.message} placeholder="Input password" {...register("password")} />
-      <InputField type="password" label="Repeat Password" error={formState.errors.confirmPassword?.message} placeholder="Repeat password" {...register("confirmPassword")} />
+      <InputField id="password" type="password" label="Password" error={formState.errors.password?.message} placeholder="Input password" {...register("password")} />
+      <InputField id="confirmPassword" type="password" label="Repeat Password" error={formState.errors.confirmPassword?.message} placeholder="Repeat password" {...register("confirmPassword")} />
     </Form>
   )
 }
