@@ -4,10 +4,10 @@
 
 ## Technologies used
 
- --  React
- -- Typescript
- -- Tailwind
- -- react-hook-forms
+React
+Typescript
+Tailwind
+react-hook-forms
 
 ## Setup
 
