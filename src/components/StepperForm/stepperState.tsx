@@ -21,9 +21,9 @@ export function useStepperFormState() {
 }
 
 
-export function StepperFormProvider({ children }: PropsWithChildren<{}>) {
+export function StepperFormProvider({ children, defaultValues = {} }: PropsWithChildren<{ defaultValues?: Record<string, string> }>) {
   const [currentStep, setCurrentStep] = useState(0)
-  const [form, setForm] = useState<Record<string, string>>({})
+  const [form, setForm] = useState<Record<string, string>>(defaultValues)
 
 
   const updateForm = useCallback((values: Record<string, string>) => {
@@ -36,7 +36,7 @@ export function StepperFormProvider({ children }: PropsWithChildren<{}>) {
 
   const onComplete = useCallback(() => {
     setCurrentStep(0)
-    setForm({})
+    setForm(defaultValues)
   }, [])
 
   const state: StepperState = useMemo(() => ({

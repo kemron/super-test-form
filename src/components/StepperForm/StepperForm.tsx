@@ -12,6 +12,7 @@ export type Step = {
 export type StepperProps = {
   title: string;
   steps: Step[];
+
 }
 function StepperForm({ title, steps }: StepperProps) {
   const stepTags = useMemo(() => steps.map(step => step.tag), [steps])

@@ -16,6 +16,7 @@ function ReviewItem({ label, value }: { label: string, value: string }) {
 export default function Review() {
   const { form, onComplete } = useStepperFormState()
 
+
   const onSubmit = () => {
     alert("Contratulations! You've completed the form!")
     onComplete()
@@ -26,7 +27,7 @@ export default function Review() {
     <Form onSubmit={onSubmit} actionBtnLabel="Complete">
       <ReviewItem label="Username" value={form.username} />
       <ReviewItem label="Email" value={form.email} />
-      <ReviewItem label="Phone Number" value={form.phone} />
+      <ReviewItem label="Country" value={form.country} />
     </Form >
   )
 }

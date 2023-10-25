@@ -1,10 +1,11 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, SyntheticEvent } from "react";
 
 interface FieldProps {
   label: string;
   error?: string;
   className?: string;
   name?: string;
+  onBlur?: (e: SyntheticEvent<HTMLDivElement>) => void;
 }
 
 

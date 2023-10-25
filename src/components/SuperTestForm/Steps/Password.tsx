@@ -7,13 +7,20 @@ import Form from "@/components/Form/Form";
 import { useCallback, FormEvent } from "react";
 
 
+const VALIDATION_MESSAGES = {
+  minLength: "Password must be atleast 8 characters",
+  maxLength: "Password cannot be more than 16 characters",
+  passwordMismatch: "Passwords must match"
+}
+
 const validation = z.object({
-  password: z.string().min(8).max(16),
-  confirmPassword: z.string().min(8).max(16),
+  password: z.string().min(8, VALIDATION_MESSAGES.minLength).max(16, VALIDATION_MESSAGES.maxLength),
+  confirmPassword: z.string().min(8, VALIDATION_MESSAGES.passwordMismatch).max(16, VALIDATION_MESSAGES.passwordMismatch),
 }).refine(data => data.password === data.confirmPassword, {
-  message: "Passwords must match",
+  message: VALIDATION_MESSAGES.passwordMismatch,
   path: ["confirmPassword"],
 })
+
 
 
 export default function PasswordScreen() {
@@ -21,7 +28,7 @@ export default function PasswordScreen() {
   const { register, handleSubmit, formState } = useForm({
     defaultValues: form,
     resolver: zodResolver(validation),
-    mode: "onBlur"
+    mode: "onTouched"
   })
 
   const onSubmit = useCallback(async (data: FormEvent) => {
@@ -31,9 +38,8 @@ export default function PasswordScreen() {
 
 
 
-  const canSubmit = formState.isValid && formState.isDirty
   return (
-    <Form onSubmit={onSubmit} actionBtnLabel="Continue" disabled={!canSubmit}>
+    <Form onSubmit={onSubmit} actionBtnLabel="Continue" disabled={!formState.isValid}>
       <InputField id="password" type="password" label="Password" error={formState.errors.password?.message} placeholder="Input password" {...register("password")} />
       <InputField id="confirmPassword" type="password" label="Repeat Password" error={formState.errors.confirmPassword?.message} placeholder="Repeat password" {...register("confirmPassword")} />
     </Form>
